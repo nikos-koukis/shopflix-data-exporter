@@ -1,0 +1,19 @@
+version: '3.8'
+
+networks:
+  shopflix-exporter:
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel-app
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8080:80"
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+    networks:
+      - shopflix-exporter
